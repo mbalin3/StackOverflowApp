@@ -10,7 +10,7 @@
 
 @interface StackoverflowQuestion : NSObject
 
-@property(nonatomic, copy) NSString *questionTitle;
+@property(nonatomic, copy) NSMutableString *questionTitle;
 @property(nonatomic) int numberOfAnswers;
 @property(nonatomic) BOOL isAnswerAccepted;
 @property(nonatomic) int timeElapsed;

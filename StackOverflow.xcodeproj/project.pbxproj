@@ -20,6 +20,11 @@
 		ED6CF2EF1F4ACC040053DAE0 /* StackOverflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2EE1F4ACC040053DAE0 /* StackOverflowTests.m */; };
 		ED6CF2FD1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2FC1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m */; };
 		ED6CF2FE1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2FC1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m */; };
+		ED8A785D1F53FDF60094B091 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8A785C1F53FDF60094B091 /* HttpClient.m */; };
+		ED8A785E1F53FDF60094B091 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8A785C1F53FDF60094B091 /* HttpClient.m */; };
+		ED8A78611F54397C0094B091 /* StackOverflowQuestionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8A78601F54397C0094B091 /* StackOverflowQuestionViewModel.m */; };
+		ED8A78621F54397C0094B091 /* StackOverflowQuestionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8A78601F54397C0094B091 /* StackOverflowQuestionViewModel.m */; };
+		ED8A78631F54732C0094B091 /* StackOverflowQustionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2DB1F4ACC040053DAE0 /* StackOverflowQustionsListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,10 @@
 		ED6CF2F01F4ACC040053DAE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED6CF2FB1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowQuestionCell.h; sourceTree = "<group>"; };
 		ED6CF2FC1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowQuestionCell.m; sourceTree = "<group>"; };
+		ED8A785B1F53FDF60094B091 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		ED8A785C1F53FDF60094B091 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		ED8A785F1F54397C0094B091 /* StackOverflowQuestionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowQuestionViewModel.h; sourceTree = "<group>"; };
+		ED8A78601F54397C0094B091 /* StackOverflowQuestionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowQuestionViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +93,8 @@
 		ED2630081F4C15260039629F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				ED8A785F1F54397C0094B091 /* StackOverflowQuestionViewModel.h */,
+				ED8A78601F54397C0094B091 /* StackOverflowQuestionViewModel.m */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -100,6 +111,8 @@
 		ED26300E1F4C7B9B0039629F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				ED8A785B1F53FDF60094B091 /* HttpClient.h */,
+				ED8A785C1F53FDF60094B091 /* HttpClient.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -283,9 +296,11 @@
 			files = (
 				ED33F35C1F4DB116009E51B4 /* StackoverflowQuestion.m in Sources */,
 				ED6CF2FD1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m in Sources */,
+				ED8A78611F54397C0094B091 /* StackOverflowQuestionViewModel.m in Sources */,
 				ED6CF2DC1F4ACC040053DAE0 /* StackOverflowQustionsListViewController.m in Sources */,
 				ED6CF2D91F4ACC040053DAE0 /* AppDelegate.m in Sources */,
 				ED6CF2D61F4ACC040053DAE0 /* main.m in Sources */,
+				ED8A785D1F53FDF60094B091 /* HttpClient.m in Sources */,
 				ED26300B1F4C5F840039629F /* CollectionViewListLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,10 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED8A78621F54397C0094B091 /* StackOverflowQuestionViewModel.m in Sources */,
 				ED33F35D1F4DB116009E51B4 /* StackoverflowQuestion.m in Sources */,
 				ED6CF2FE1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m in Sources */,
+				ED8A785E1F53FDF60094B091 /* HttpClient.m in Sources */,
 				ED6CF2EF1F4ACC040053DAE0 /* StackOverflowTests.m in Sources */,
 				ED26300C1F4C5F840039629F /* CollectionViewListLayout.m in Sources */,
+				ED8A78631F54732C0094B091 /* StackOverflowQustionsListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

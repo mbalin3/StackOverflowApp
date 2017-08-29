@@ -9,6 +9,7 @@
 #import "StackOverflowQustionsListViewController.h"
 #import "StackOverflowQuestionCell.h"
 #import "CollectionViewListLayout.h"
+#import "StackOverflowQuestionViewModel.h"
 
 @interface StackOverflowQustionsListViewController ()
 @property (strong, nonatomic) IBOutlet UICollectionView *questionsCollectionView;
@@ -25,21 +26,19 @@
     self.navigationItem.title = @"Questions";
     
     self.headerLabel.text = @"Questions tagged ---";
-    self.tempArray = @[@"iOS: add imageView in a scrollview dsafds", @"Constraints not working in UITableview dgsdfds", @"Reading from a Firebase database dfgdfgdg", @"How to update toValue/fromValue over gfdfd", @"Json object that return from Api fddghfd", @"Fragment - how can getActivity() dfgdfgdg", @"gfdfd", @"fddghfd", @"dfgdfgdg"];
     
-    [self getJSONData];
+    StackOverflowQuestionViewModel *questionsViewModel = [[StackOverflowQuestionViewModel alloc] init];
+    [questionsViewModel getStackOverflowJSON:@"https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=activity&tagged=ios&site=stackoverflow"];
+    
+    self.tempArray = [questionsViewModel getMostRecentQusetions];
+    
+    
+    /*self.tempArray = @[@"iOS: add imageView in a scrollview dsafds", @"Constraints not working in UITableview dgsdfds", @"Reading from a Firebase database dfgdfgdg", @"How to update toValue/fromValue over gfdfd", @"Json object that return from Api fddghfd", @"Fragment - how can getActivity() dfgdfgdg", @"gfdfd", @"fddghfd", @"dfgdfgdg"];*/
+    
     [self initCollectionView];
     
 }
 
-
--(void)getJSONData {
-    NSError *error;
-    NSString *url_string = [NSString stringWithFormat:@"https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=activity&tagged=ios&site=stackoverflow"];
-    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString:  url_string]];
-    NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    NSLog(@"json: %@", json);
-}
 
 -(void)initCollectionView {
     self.listlayout = [[CollectionViewListLayout alloc] init];
