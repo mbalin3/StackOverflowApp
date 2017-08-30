@@ -11,9 +11,9 @@
 @interface StackoverflowQuestion : NSObject
 
 @property(nonatomic, copy) NSMutableString *questionTitle;
-@property(nonatomic) int numberOfAnswers;
+@property(nonatomic) int numberOfAnswersforQuestion;
 @property(nonatomic) BOOL isAnswerAccepted;
-@property(nonatomic) int timeElapsed;
-@property(nonatomic) NSArray *questionTags;
+@property(nonatomic) NSString *timeElapsed;
+@property(nonatomic) NSMutableArray *questionTags;
 
 @end

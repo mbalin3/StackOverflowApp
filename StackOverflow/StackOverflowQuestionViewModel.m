@@ -20,14 +20,19 @@
     return self;
 }
 
--(void)getStackOverflowJSON:(NSString*) url {
-    dispatch_queue_t jsonQueue = dispatch_queue_create("JSON Queue",NULL);
+/*-(void)getStackOverflowJSON:(NSString*) url {
     
-    dispatch_async(jsonQueue, ^{
+    HttpClient *getStackOverflowQuestions = [[HttpClient alloc] initWithUrl:url];
+    [getStackOverflowQuestions sendRequest:url success:^(NSDictionary *responseJson) {
         
-        HttpClient *getStackOverflowQuestions = [[HttpClient alloc] initWithUrl:url];
-    });
-}
+        NSLog(@"RESPONSE JSON: %@", responseJson);
+        [self mapJSONDataToQuestion:responseJson];
+        [self.delegate reloadCollectionView];
+    
+    } failure:^(NSError *error){
+        NSLog(@"ERROR ::  %@", error.localizedDescription)	;
+    }];
+}*/
 
 -(void)mapJSONDataToQuestion:(NSDictionary*)json {
     
@@ -39,14 +44,36 @@
 
         StackoverflowQuestion *questionItem = [[StackoverflowQuestion alloc] init];
         questionItem.questionTitle = [[items objectAtIndex:index] objectForKey: @"title"];
+        questionItem.numberOfAnswersforQuestion = [[[items objectAtIndex:index] objectForKey:@"answer_count"] intValue];
+       // questionItem.isAnswerAccepted = [[items objectAtIndex:index] objectForKey:@"is_answered"];
+        questionItem.timeElapsed = [self formatTimeToString:[[items objectAtIndex:index] objectForKey:@"creation_date"]];
+        
+        questionItem.questionTags = [json valueForKeyPath:@"items.tags"];
+        
         NSLog(@"Adding questionItem:...%@", questionItem.questionTitle);
         [self.mostRecentQuestions addObject:questionItem];
-        NSLog(@"question count:: %lu", (unsigned long)[self.mostRecentQuestions count]);
+       
     }
+     NSLog(@"question count:: %lu", (unsigned long)[self.mostRecentQuestions count]);
 }
+
 
 -(NSMutableArray*)getMostRecentQusetions {
     return self.mostRecentQuestions;
+}
+
+-(NSString*)formatTimeToString:(NSDate*)time {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    NSString *timeString = [formatter stringFromDate:time];
+    return timeString;
+}
+
+-(NSString*)hasMultipleAnswers:(int)numberOfAnswerForQuestion {
+    if (numberOfAnswerForQuestion == 1) {
+        return @"Answer";
+    } else {
+        return @"Answers";
+    }
 }
 
 @end

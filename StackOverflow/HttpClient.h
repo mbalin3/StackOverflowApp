@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HttpClient : NSObject<NSURLSessionDataDelegate>
+@interface HttpClient : NSObject
 
 @property(nonatomic) NSMutableData *response;
 @property(nonatomic) NSString *url;
 
 -(instancetype)initWithUrl:(NSString*)url;
+-(void)sendRequest:(NSString *)withUrlString success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure;
 
 @end

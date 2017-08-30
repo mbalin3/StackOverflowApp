@@ -9,13 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "StackoverflowQuestion.h"
 
+@protocol QuestionDelegate <NSObject>
+-(void)reloadCollectionView;
+@end
+
 @interface StackOverflowQuestionViewModel : NSObject
 
+@property(nonatomic, weak) id<QuestionDelegate> delegate;
 @property(nonatomic) NSMutableArray *mostRecentQuestions;
 
 -(instancetype)init;
 -(void)getStackOverflowJSON:(NSString*) url;
 -(void)mapJSONDataToQuestion:(NSDictionary*)json;
 -(NSMutableArray*)getMostRecentQusetions;
-
+-(NSString*)hasMultipleAnswers:(int)numberOfAnswerForQuestion ;
 @end
