@@ -20,37 +20,24 @@
     return self;
 }
 
-/*-(void)getStackOverflowJSON:(NSString*) url {
-    
-    HttpClient *getStackOverflowQuestions = [[HttpClient alloc] initWithUrl:url];
-    [getStackOverflowQuestions sendRequest:url success:^(NSDictionary *responseJson) {
-        
-        NSLog(@"RESPONSE JSON: %@", responseJson);
-        [self mapJSONDataToQuestion:responseJson];
-        [self.delegate reloadCollectionView];
-    
-    } failure:^(NSError *error){
-        NSLog(@"ERROR ::  %@", error.localizedDescription)	;
-    }];
-}*/
-
 -(void)mapJSONDataToQuestion:(NSDictionary*)json {
     
     NSLog(@"Mapping JSON...  %@", json);
     NSArray *items = [json objectForKey:@"items"];
     NSLog(@"items count:: %lu", (unsigned long)[items count]);
     
+    StackoverflowQuestion *questionItem = [[StackoverflowQuestion alloc] init];
+    questionItem.questionTags = [json valueForKeyPath:@"items.tags"];
+    
     for(int index=0; index < [items count]; index++) {
-
-        StackoverflowQuestion *questionItem = [[StackoverflowQuestion alloc] init];
+ 
         questionItem.questionTitle = [[items objectAtIndex:index] objectForKey: @"title"];
         questionItem.numberOfAnswersforQuestion = [[[items objectAtIndex:index] objectForKey:@"answer_count"] intValue];
-       // questionItem.isAnswerAccepted = [[items objectAtIndex:index] objectForKey:@"is_answered"];
-        questionItem.timeElapsed = [self formatTimeToString:[[items objectAtIndex:index] objectForKey:@"creation_date"]];
-        
-        questionItem.questionTags = [json valueForKeyPath:@"items.tags"];
-        
+        questionItem.isAnswerAccepted = [[[items objectAtIndex:index] objectForKey:@"is_answered"] boolValue];
+        questionItem.timeElapsed = [[items objectAtIndex:index] objectForKey:@"creation_date"];
+
         NSLog(@"Adding questionItem:...%@", questionItem.questionTitle);
+        NSLog(@"Adding TIME:...%@", (questionItem.timeElapsed));
         [self.mostRecentQuestions addObject:questionItem];
        
     }
@@ -63,9 +50,22 @@
 }
 
 -(NSString*)formatTimeToString:(NSDate*)time {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    NSString *timeString = [formatter stringFromDate:time];
-    return timeString;
+    //NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    
+    //long newTime = time/(1000*60*60);
+    long now = (long)(NSTimeInterval)([[NSDate date] timeIntervalSince1970]);
+    
+    //newTime = newTime/(1000*60*60);
+    
+    NSLog(@"COnverted time::  %ld ", now);
+    NSString *timeString = [NSString stringWithFormat:@"%@", time];
+    long convertedTime = [timeString longLongValue];
+    //long newTime = convertedTime/(1000*60*60);
+    long newTime = now - convertedTime;
+    long toNewTime = newTime/(1000*60*60);
+    NSLog(@"RESULT time %ld",toNewTime);
+    
+    return [NSString stringWithFormat:@"%ld", toNewTime];
 }
 
 -(NSString*)hasMultipleAnswers:(int)numberOfAnswerForQuestion {

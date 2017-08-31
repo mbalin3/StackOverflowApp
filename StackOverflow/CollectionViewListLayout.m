@@ -24,7 +24,7 @@
 
 -(void)initLayoutAttributes {
     self.itemHeight = 86;
-    self.minimumLineSpacing = 1;
+    self.minimumLineSpacing = 1.5;
 }
 
 -(CGFloat)itemWidth {

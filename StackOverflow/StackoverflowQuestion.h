@@ -13,7 +13,7 @@
 @property(nonatomic, copy) NSMutableString *questionTitle;
 @property(nonatomic) int numberOfAnswersforQuestion;
 @property(nonatomic) BOOL isAnswerAccepted;
-@property(nonatomic) NSString *timeElapsed;
+@property(nonatomic) NSDate *timeElapsed;
 @property(nonatomic) NSMutableArray *questionTags;
 
 @end

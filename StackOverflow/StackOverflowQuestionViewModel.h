@@ -22,5 +22,6 @@
 -(void)getStackOverflowJSON:(NSString*) url;
 -(void)mapJSONDataToQuestion:(NSDictionary*)json;
 -(NSMutableArray*)getMostRecentQusetions;
--(NSString*)hasMultipleAnswers:(int)numberOfAnswerForQuestion ;
+-(NSString*)hasMultipleAnswers:(int)numberOfAnswerForQuestion;
+-(NSString*)formatTimeToString:(NSDate*)time;
 @end

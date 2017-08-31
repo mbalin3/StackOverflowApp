@@ -22,14 +22,11 @@
     return self;
 }
 
-
 -(void)sendRequest:(NSString *)withUrlString success:(void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure {
     
     NSURLSession *session = [NSURLSession sharedSession];
-    
     NSURL *url = [NSURL URLWithString:withUrlString];
-    
-    
+
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler: ^(NSData *data, NSURLResponse *response, NSError *error) {
     
         NSLog(@"DATA:: %@",data);
@@ -41,9 +38,7 @@
             success(json);
         }
     }];
-    
     [task resume];
 }
-
 
 @end

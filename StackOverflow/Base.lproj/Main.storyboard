@@ -55,7 +55,7 @@
                                         <rect key="frame" x="4.5" y="0.0" width="366" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="366" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-NR-nIx">
@@ -68,7 +68,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.36862745098039218" green="0.75294117647058822" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.88627450980392153" green="0.88235294117647056" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="B6V-Wb-aXW" firstAttribute="centerY" secondItem="5tb-NR-nIx" secondAttribute="centerY" id="63e-Pk-FPI"/>
                                                         <constraint firstItem="B6V-Wb-aXW" firstAttribute="centerX" secondItem="5tb-NR-nIx" secondAttribute="centerX" id="eWF-Jy-eca"/>
@@ -91,7 +91,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpy-2s-73g">
-                                                    <rect key="frame" x="212" y="64" width="146" height="14"/>
+                                                    <rect key="frame" x="210" y="64" width="146" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="Tvy-IJ-zB3"/>
                                                     </constraints>
@@ -109,9 +109,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F5V-oZ-26e">
-                                                    <rect key="frame" x="72" y="42" width="66" height="20"/>
+                                                    <rect key="frame" x="72" y="42" width="33" height="20"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" text=" ios   " textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="PRs-fO-RJ9">
+                                                        <textField hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" text=" ios   " textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="PRs-fO-RJ9">
                                                             <rect key="frame" x="0.0" y="0.0" width="33" height="20"/>
                                                             <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
@@ -129,12 +129,6 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gQ-a7-QIk">
-                                                            <rect key="frame" x="41" y="0.0" width="25" height="20"/>
-                                                            <nil key="textColor"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -149,7 +143,7 @@
                                             <constraint firstItem="gpy-2s-73g" firstAttribute="width" secondItem="RWz-jI-VM2" secondAttribute="width" multiplier="0.4" id="HUA-sn-3t9"/>
                                             <constraint firstItem="5tb-NR-nIx" firstAttribute="top" secondItem="RWz-jI-VM2" secondAttribute="top" constant="16" id="Kzh-Qy-Feb"/>
                                             <constraint firstItem="F5V-oZ-26e" firstAttribute="top" secondItem="mXY-Sd-EYe" secondAttribute="bottom" constant="8" id="Om8-Pi-MKq"/>
-                                            <constraint firstAttribute="trailing" secondItem="gpy-2s-73g" secondAttribute="trailing" constant="8" id="XQ5-nX-KW6"/>
+                                            <constraint firstAttribute="trailing" secondItem="gpy-2s-73g" secondAttribute="trailing" constant="10" id="XQ5-nX-KW6"/>
                                             <constraint firstAttribute="trailing" secondItem="mXY-Sd-EYe" secondAttribute="trailing" constant="16" id="XVJ-mo-0mG"/>
                                             <constraint firstItem="mXY-Sd-EYe" firstAttribute="top" secondItem="RWz-jI-VM2" secondAttribute="top" constant="16" id="cm8-8d-n3L"/>
                                             <constraint firstItem="F5V-oZ-26e" firstAttribute="leading" secondItem="5tb-NR-nIx" secondAttribute="trailing" constant="16" id="dQ2-Re-pTY"/>
