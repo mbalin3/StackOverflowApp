@@ -17,7 +17,6 @@
     
     if(self) {
         _url = url;
-       // [self sendRequest:url];
     }
     return self;
 }

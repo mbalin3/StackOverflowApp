@@ -1,3 +1,4 @@
+
 //
 //  StackOverflowQuestionViewModel.m
 //  StackOverflow
@@ -22,24 +23,20 @@
 
 -(void)mapJSONDataToQuestion:(NSDictionary*)json {
     
-    NSLog(@"Mapping JSON...  %@", json);
     NSArray *items = [json objectForKey:@"items"];
     NSLog(@"items count:: %lu", (unsigned long)[items count]);
     
-    StackoverflowQuestion *questionItem = [[StackoverflowQuestion alloc] init];
-    questionItem.questionTags = [json valueForKeyPath:@"items.tags"];
-    
     for(int index=0; index < [items count]; index++) {
- 
-        questionItem.questionTitle = [[items objectAtIndex:index] objectForKey: @"title"];
+        StackoverflowQuestion *questionItem = [[StackoverflowQuestion alloc] init];
+        [questionItem setQuestionTitle: [[items objectAtIndex:index] objectForKey: @"title"]];
         questionItem.numberOfAnswersforQuestion = [[[items objectAtIndex:index] objectForKey:@"answer_count"] intValue];
         questionItem.isAnswerAccepted = [[[items objectAtIndex:index] objectForKey:@"is_answered"] boolValue];
         questionItem.timeElapsed = [[items objectAtIndex:index] objectForKey:@"creation_date"];
-
+        questionItem.questionTags = [[items objectAtIndex:index] objectForKey:@"tags"] ;
+        
         NSLog(@"Adding questionItem:...%@", questionItem.questionTitle);
         NSLog(@"Adding TIME:...%@", (questionItem.timeElapsed));
         [self.mostRecentQuestions addObject:questionItem];
-       
     }
      NSLog(@"question count:: %lu", (unsigned long)[self.mostRecentQuestions count]);
 }
@@ -55,8 +52,6 @@
     //long newTime = time/(1000*60*60);
     long now = (long)(NSTimeInterval)([[NSDate date] timeIntervalSince1970]);
     
-    //newTime = newTime/(1000*60*60);
-    
     NSLog(@"COnverted time::  %ld ", now);
     NSString *timeString = [NSString stringWithFormat:@"%@", time];
     long convertedTime = [timeString longLongValue];
@@ -65,7 +60,7 @@
     long toNewTime = newTime/(1000*60*60);
     NSLog(@"RESULT time %ld",toNewTime);
     
-    return [NSString stringWithFormat:@"%ld", toNewTime];
+    return [NSString stringWithFormat:@"%ld hours ago", toNewTime];
 }
 
 -(NSString*)hasMultipleAnswers:(int)numberOfAnswerForQuestion {

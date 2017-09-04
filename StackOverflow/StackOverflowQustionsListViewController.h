@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StackOverflowQuestionViewModel.h"
 
-@interface StackOverflowQustionsListViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, QuestionDelegate>
+@interface StackOverflowQustionsListViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *questionsCollectionView;
 
 @end

@@ -14,25 +14,27 @@
 
 @interface StackOverflowQustionsListViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
-@property (strong, nonatomic) NSMutableArray *tempArray;
-@property (nonatomic) CollectionViewListLayout *listlayout;
-@property (nonatomic) StackOverflowQuestionViewModel *questionsViewModel;
-@property (weak, nonatomic) IBOutlet UIButton *reloadButton;
+
+//@property (strong, nonatomic)
+
 
 @end
 
 @implementation StackOverflowQustionsListViewController
-
-@synthesize questionsCollectionView;
+{
+    IBOutlet UILabel *headerLabel;
+    NSMutableArray *tempArray;
+    CollectionViewListLayout *listlayout;
+    StackOverflowQuestionViewModel *questionsViewModel;
+    IBOutlet UIButton *reloadButton;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Questions";
-    self.headerLabel.text = @"Questions tagged ---";
-    
-    self.questionsViewModel = [[StackOverflowQuestionViewModel alloc] init];
-    self.tempArray = [[NSMutableArray alloc] init];
+    headerLabel.text = @"Questions tagged \"iOS\" ";
+    questionsViewModel = [[StackOverflowQuestionViewModel alloc] init];
+    tempArray = [[NSMutableArray alloc] init];
     
     [self requestJSON:@"https://api.stackexchange.com/2.2/questions?pagesize=50&order=desc&sort=creation&tagged=ios&site=stackoverflow"];
 }
@@ -43,13 +45,13 @@
 }
 
 -(void)initCollectionView {
-    self.listlayout = [[CollectionViewListLayout alloc] init];
+    listlayout = [[CollectionViewListLayout alloc] init];
     self.questionsCollectionView.dataSource = self;
-    self.questionsCollectionView.collectionViewLayout = self.listlayout;
+    self.questionsCollectionView.collectionViewLayout = listlayout;
 }
 
 -(void)reloadCollectionView {
-    self.tempArray = [self.questionsViewModel getMostRecentQusetions];
+    tempArray = [questionsViewModel getMostRecentQusetions];
     [self.questionsCollectionView reloadData];
 }
 
@@ -58,8 +60,8 @@
     [getStackOverflowQuestions sendRequest:url success:^(NSDictionary *responseJson) {
         
         NSLog(@"RESPONSE JSON: %@", responseJson);
-        [self.questionsViewModel mapJSONDataToQuestion:responseJson];
-        self.tempArray = [self.questionsViewModel getMostRecentQusetions];
+        [questionsViewModel mapJSONDataToQuestion:responseJson];
+        tempArray = [questionsViewModel getMostRecentQusetions];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.questionsCollectionView reloadData];
         });
@@ -69,42 +71,38 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.tempArray.count;
+    return tempArray.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"StackOverflowQuestionCell";
    
     StackOverflowQuestionCell *questionCell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-
-    if(self.tempArray.count != 0) {
-        questionCell.questionLabel.text = [[self.tempArray objectAtIndex:indexPath.row] questionTitle];
-        questionCell.numberOfAnswers.text = [NSString stringWithFormat:@"%d",[[self.tempArray objectAtIndex:indexPath.row] numberOfAnswersforQuestion]];
-        // questionCell.numberOfAnswersView.layer.cornerRadius = 25;
+    //NSAssert(self.tempArray != nil);
+    if(tempArray.count != 0) {
+        questionCell.questionLabel.text = [[tempArray objectAtIndex:indexPath.row] questionTitle];
+        questionCell.numberOfAnswers.text = [NSString stringWithFormat:@"%d",[[tempArray objectAtIndex:indexPath.row] numberOfAnswersforQuestion]];
+        questionCell.answersLabel.text = [questionsViewModel hasMultipleAnswers:[[tempArray objectAtIndex:indexPath.row] numberOfAnswersforQuestion]];
+        questionCell.timeElapsedLabel.text = [questionsViewModel formatTimeToString:[[tempArray objectAtIndex:indexPath.row] timeElapsed]];
+        NSLog(@"Time elapsed:::%@", [[tempArray objectAtIndex:indexPath.row] timeElapsed]);
         
-        questionCell.answersLabel.text = [self.questionsViewModel hasMultipleAnswers:[[self.tempArray objectAtIndex:indexPath.row] numberOfAnswersforQuestion]];
-        questionCell.timeElapsedLabel.text = [self.questionsViewModel formatTimeToString:[[self.tempArray objectAtIndex:indexPath.row] timeElapsed]];
-        NSLog(@"Time elapsed:::%@", [[self.tempArray objectAtIndex:indexPath.row] timeElapsed]);
-        
-        if([[self.tempArray objectAtIndex:indexPath.row] isAnswerAccepted] ) {
+        if([[tempArray objectAtIndex:indexPath.row] isAnswerAccepted] ) {
+            NSLog(@"isAnswered and GREEN %d ----> Count %@", [[tempArray objectAtIndex:indexPath.row] isAnswerAccepted], [NSString stringWithFormat:@"%d",[[tempArray objectAtIndex:indexPath.row] numberOfAnswersforQuestion]]);
             [questionCell.numberOfAnswersView setBackgroundColor: [UIColor colorWithRed:0.37 green:0.75 blue:0.49 alpha:1.0]];
         }
         
         CGFloat fontSize = 12.0;
-        NSMutableArray *allTags = [[NSMutableArray alloc] init];
-        allTags = [self.tempArray[indexPath.row] questionTags] ;
-        for (int tagsIndex = 0; tagsIndex < allTags.count; tagsIndex++) {
-            NSMutableArray *innertags = [[NSMutableArray alloc] init];
-            innertags = [allTags objectAtIndex:tagsIndex];
-            for (int innerTagIndex=0; innerTagIndex<innertags.count; innerTagIndex++) {
-                UITextField *newTag = [[UITextField alloc] init];
-                newTag.text = [innertags objectAtIndex:innerTagIndex];
-                [newTag setBackgroundColor: [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1.0]];
-                [newTag setTextColor: [UIColor colorWithRed:0.45 green:0.45 blue:0.45 alpha:1.0]];
-                newTag.font = [newTag.font fontWithSize:fontSize];
-                NSLog(@"TAG ADDED::  %@",  [innertags objectAtIndex:innerTagIndex]);
-                [questionCell.tagsStackview addArrangedSubview:newTag];
-            }
+        NSMutableArray *allTagsForQuestion = [[NSMutableArray alloc] init];
+        allTagsForQuestion = [tempArray[indexPath.row] questionTags] ;
+        for (int tagsIndex = 0; tagsIndex < allTagsForQuestion.count; tagsIndex++) {
+            UITextField *newTag = [[UITextField alloc] init];
+            newTag.text = [NSString stringWithFormat:@"   %@  ", allTagsForQuestion[tagsIndex]];
+            newTag.font = [newTag.font fontWithSize:fontSize];
+            newTag.layer.cornerRadius = 5;
+            newTag.userInteractionEnabled = NO;
+            [newTag setBackgroundColor: [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1.0]];
+            [newTag setTextColor: [UIColor colorWithRed:0.45 green:0.45 blue:0.45 alpha:1.0]];
+            [questionCell.tagsStackview addArrangedSubview:newTag];
         }
     }
     return questionCell;
@@ -117,7 +115,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
