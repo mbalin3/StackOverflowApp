@@ -9,6 +9,10 @@
 #import "CollectionViewListLayout.h"
 
 @implementation CollectionViewListLayout
+{
+    CGFloat itemHeight;
+}
+
 
 -(instancetype)init {
     self = [super init];
@@ -23,7 +27,7 @@
 }
 
 -(void)initLayoutAttributes {
-    self.itemHeight = 86;
+    itemHeight = 86;
     self.minimumLineSpacing = 1.5;
 }
 
@@ -32,11 +36,11 @@
 }
 
 -(CGSize)itemSize {
-    return CGSizeMake([self itemWidth], [self itemHeight]);
+    return CGSizeMake([self itemWidth], itemHeight);
 }
 
 -(void)setItemSize:(CGSize)itemSize {
-    self.itemSize = CGSizeMake([self itemWidth], [self itemHeight]);
+    self.itemSize = CGSizeMake([self itemWidth], itemHeight);
 }
 
 -(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset {

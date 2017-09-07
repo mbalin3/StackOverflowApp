@@ -13,6 +13,8 @@
 		ED33F35C1F4DB116009E51B4 /* StackoverflowQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = ED33F35B1F4DB116009E51B4 /* StackoverflowQuestion.m */; };
 		ED6BDB701F5D3E5B006313DE /* StackOverflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2EE1F4ACC040053DAE0 /* StackOverflowTests.m */; };
 		ED6BDB731F5D40DE006313DE /* StackOverflowQuestionViewModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6BDB721F5D40DE006313DE /* StackOverflowQuestionViewModelTests.m */; };
+		ED6BDB771F5D7517006313DE /* CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6BDB761F5D7517006313DE /* CustomColors.m */; };
+		ED6BDB7E1F5D894D006313DE /* IBRoundTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6BDB7D1F5D894D006313DE /* IBRoundTextField.m */; };
 		ED6CF2D61F4ACC040053DAE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2D51F4ACC040053DAE0 /* main.m */; };
 		ED6CF2D91F4ACC040053DAE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2D81F4ACC040053DAE0 /* AppDelegate.m */; };
 		ED6CF2DC1F4ACC040053DAE0 /* StackOverflowQustionsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2DB1F4ACC040053DAE0 /* StackOverflowQustionsListViewController.m */; };
@@ -46,6 +48,10 @@
 		ED33F35A1F4DB116009E51B4 /* StackoverflowQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackoverflowQuestion.h; sourceTree = "<group>"; };
 		ED33F35B1F4DB116009E51B4 /* StackoverflowQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackoverflowQuestion.m; sourceTree = "<group>"; };
 		ED6BDB721F5D40DE006313DE /* StackOverflowQuestionViewModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowQuestionViewModelTests.m; sourceTree = "<group>"; };
+		ED6BDB751F5D7517006313DE /* CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomColors.h; sourceTree = "<group>"; };
+		ED6BDB761F5D7517006313DE /* CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomColors.m; sourceTree = "<group>"; };
+		ED6BDB7C1F5D894D006313DE /* IBRoundTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBRoundTextField.h; sourceTree = "<group>"; };
+		ED6BDB7D1F5D894D006313DE /* IBRoundTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBRoundTextField.m; sourceTree = "<group>"; };
 		ED6CF2D11F4ACC040053DAE0 /* StackOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6CF2D51F4ACC040053DAE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED6CF2D71F4ACC040053DAE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -143,6 +149,24 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		ED6BDB741F5D74D7006313DE /* CustomFormatting */ = {
+			isa = PBXGroup;
+			children = (
+				ED6BDB751F5D7517006313DE /* CustomColors.h */,
+				ED6BDB761F5D7517006313DE /* CustomColors.m */,
+			);
+			name = CustomFormatting;
+			sourceTree = "<group>";
+		};
+		ED6BDB781F5D8865006313DE /* Designables */ = {
+			isa = PBXGroup;
+			children = (
+				ED6BDB7C1F5D894D006313DE /* IBRoundTextField.h */,
+				ED6BDB7D1F5D894D006313DE /* IBRoundTextField.m */,
+			);
+			name = Designables;
+			sourceTree = "<group>";
+		};
 		ED6CF2C81F4ACC040053DAE0 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +200,8 @@
 				ED6CF2FA1F4AF64E0053DAE0 /* ViewControllers */,
 				ED26300D1F4C73F50039629F /* ViewLayouts */,
 				ED26300E1F4C7B9B0039629F /* Services */,
+				ED6BDB781F5D8865006313DE /* Designables */,
+				ED6BDB741F5D74D7006313DE /* CustomFormatting */,
 				ED6CF2D41F4ACC040053DAE0 /* Supporting Files */,
 			);
 			path = StackOverflow;
@@ -432,8 +458,10 @@
 				ED8A78611F54397C0094B091 /* StackOverflowQuestionViewModel.m in Sources */,
 				ED33F35C1F4DB116009E51B4 /* StackoverflowQuestion.m in Sources */,
 				ED6CF2FD1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m in Sources */,
+				ED6BDB771F5D7517006313DE /* CustomColors.m in Sources */,
 				ED8A785D1F53FDF60094B091 /* HttpClient.m in Sources */,
 				ED6CF2D91F4ACC040053DAE0 /* AppDelegate.m in Sources */,
+				ED6BDB7E1F5D894D006313DE /* IBRoundTextField.m in Sources */,
 				ED26300B1F4C5F840039629F /* CollectionViewListLayout.m in Sources */,
 				ED6CF2DC1F4ACC040053DAE0 /* StackOverflowQustionsListViewController.m in Sources */,
 			);
@@ -573,6 +601,7 @@
 			baseConfigurationReference = 8CCD9534D042C071DEC04FF7 /* Pods-StackOverflow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MPWP3H5UNG;
 				INFOPLIST_FILE = StackOverflow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -586,6 +615,7 @@
 			baseConfigurationReference = B0D4F84F324C23B8C22C81D0 /* Pods-StackOverflow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MPWP3H5UNG;
 				INFOPLIST_FILE = StackOverflow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

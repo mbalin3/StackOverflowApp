@@ -10,6 +10,4 @@
 
 @interface CollectionViewListLayout : UICollectionViewFlowLayout
 
-@property (nonatomic) CGFloat itemHeight;
-
 @end
