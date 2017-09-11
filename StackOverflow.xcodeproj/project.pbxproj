@@ -22,6 +22,7 @@
 		ED6CF2E11F4ACC040053DAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6CF2E01F4ACC040053DAE0 /* Assets.xcassets */; };
 		ED6CF2E41F4ACC040053DAE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6CF2E21F4ACC040053DAE0 /* LaunchScreen.storyboard */; };
 		ED6CF2FD1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6CF2FC1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m */; };
+		ED6E953E1F6291A8009EDABE /* StackOverflowQuestionsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6E953C1F6291A8009EDABE /* StackOverflowQuestionsList.storyboard */; };
 		ED8A785D1F53FDF60094B091 /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8A785C1F53FDF60094B091 /* HttpClient.m */; };
 		ED8A78611F54397C0094B091 /* StackOverflowQuestionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8A78601F54397C0094B091 /* StackOverflowQuestionViewModel.m */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		ED6CF2F01F4ACC040053DAE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED6CF2FB1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowQuestionCell.h; sourceTree = "<group>"; };
 		ED6CF2FC1F4AF7CB0053DAE0 /* StackOverflowQuestionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowQuestionCell.m; sourceTree = "<group>"; };
+		ED6E953D1F6291A8009EDABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/StackOverflowQuestionsList.storyboard; sourceTree = "<group>"; };
 		ED8A785B1F53FDF60094B091 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		ED8A785C1F53FDF60094B091 /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
 		ED8A785F1F54397C0094B091 /* StackOverflowQuestionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowQuestionViewModel.h; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				ED6CF2E21F4ACC040053DAE0 /* LaunchScreen.storyboard */,
 				ED6CF2DD1F4ACC040053DAE0 /* Main.storyboard */,
+				ED6E953C1F6291A8009EDABE /* StackOverflowQuestionsList.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED6CF2E41F4ACC040053DAE0 /* LaunchScreen.storyboard in Resources */,
+				ED6E953E1F6291A8009EDABE /* StackOverflowQuestionsList.storyboard in Resources */,
 				ED6CF2E11F4ACC040053DAE0 /* Assets.xcassets in Resources */,
 				ED6CF2DF1F4ACC040053DAE0 /* Main.storyboard in Resources */,
 			);
@@ -501,6 +505,14 @@
 				ED6CF2E31F4ACC040053DAE0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		ED6E953C1F6291A8009EDABE /* StackOverflowQuestionsList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED6E953D1F6291A8009EDABE /* Base */,
+			);
+			name = StackOverflowQuestionsList.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -10,10 +10,8 @@
 
 @interface IBRoundTextField : UITextField
 
-@property(nonatomic) IBInspectable UIColor *textFieldBackgroundColor;
-@property(nonatomic) IBInspectable UIColor *colorText;
 @property(nonatomic) IBInspectable CGFloat fontSize;
-//@property(nonatomic) IBInspectable CGFloat cornerRadius;
+@property(nonatomic) IBInspectable CGFloat cornerRadius;
 @property(nonatomic) IBInspectable BOOL isTextFieldEnabled;
 
 @end

@@ -14,7 +14,7 @@
 
 @property(nonatomic) NSMutableArray *mostRecentQuestions;
 
--(instancetype)init;
+- (instancetype)init;
 - (void) mapJSONDataToQuestion:(NSDictionary*)json;
 - (NSMutableArray*) allRecentQuestions;
 - (NSString*) hasMultipleAnswers:(NSInteger)numberOfAnswerForQuestion;

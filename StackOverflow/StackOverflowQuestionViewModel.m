@@ -9,9 +9,9 @@
 
 #import "StackOverflowQuestionViewModel.h"
 #import "StackOverflowQustionsListViewController.h"
+#import "StackOverflowQuestionCell.h"
 #import "HttpClient.h"
 #import "CustomColors.h"
-#import "IBRoundTextField.h"
 
 
 @implementation StackOverflowQuestionViewModel
@@ -36,31 +36,23 @@
         [questionItem setQuestionTitle: [[items objectAtIndex:index] objectForKey: @"title"]];
         [questionItem setAnswerCount: [[[items objectAtIndex:index] objectForKey:@"answer_count"] integerValue]];
         [questionItem setAcceptedAnswerId:[[[items objectAtIndex:index] objectForKey:@"accepted_answer_id"] longValue]];
-        NSLog(@"Accepted Question: %@ ", questionItem.questionTitle);
         [questionItem setIsAnswerAccepted: [self checkAcceptanceofAnswer:questionItem.acceptedAnswerId]];
         [questionItem setTimeElapsed: [[items objectAtIndex:index] objectForKey:@"creation_date"]];
         [questionItem setQuestionTags: [[items objectAtIndex:index] objectForKey:@"tags"]];
         
-        NSLog(@"Adding TIME:...%@", (questionItem.timeElapsed));
         [self.mostRecentQuestions addObject:questionItem];
         [self setMostRecentQuestions:self.mostRecentQuestions];
     }
      NSLog(@"question count:: %lu", (unsigned long)[self.mostRecentQuestions count]);
 }
 
-/*- (NSMutableArray*) mostRecentQuestions {
-    NSAssert(self.mostRecentQuestions != 0, [NSString stringWithFormat: @"The 'mostRecentQuestions' array count is 0"]);
-    return self.mostRecentQuestions;
-}*/
-
--(NSMutableArray *)allRecentQuestions {
+- (NSMutableArray *)allRecentQuestions {
     NSAssert(self.mostRecentQuestions != 0, [NSString stringWithFormat: @"The 'mostRecentQuestions' array count is 0"]);
     return self.mostRecentQuestions;
 }
 
 
 - (BOOL) checkAcceptanceofAnswer: (NSInteger)acceptedAnswerId {
-    NSLog(@"Acceptance ID::::  %ld", (long)acceptedAnswerId);
     if (acceptedAnswerId != 0) {
         return 1;
     } else {
@@ -70,13 +62,10 @@
 
 - (NSString*) formatTimeToString: (NSDate*)time {
     long now = (long)(NSTimeInterval)([[NSDate date] timeIntervalSince1970]);
-    
-    NSLog(@"COnverted time::  %ld ", now);
     NSString *timeString = [NSString stringWithFormat:@"%@", time];
     long convertedTime = [timeString longLongValue];
     long newTime = now - convertedTime;
     long toNewTime = newTime/(1000*60*60);
-    NSLog(@"RESULT time %ld",toNewTime);
     NSLog(@"Time elapsed:::%ld", toNewTime);
     
     return [self hoursElapsedString: toNewTime];

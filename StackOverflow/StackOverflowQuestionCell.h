@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StackoverflowQuestion.h"
 
 @interface StackOverflowQuestionCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIView *numberOfAnswersView;
+@property (weak, nonatomic) IBOutlet UIStackView *tagsStackview;
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfAnswersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *answersLabel;
-@property (weak, nonatomic) IBOutlet UIStackView *tagsStackview;
 @property (weak, nonatomic) IBOutlet UILabel *timeElapsedLabel;
-@property (weak, nonatomic) IBOutlet UIView *numberOfAnswersView;
-
 
 @end

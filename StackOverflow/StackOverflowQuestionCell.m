@@ -7,6 +7,7 @@
 //
 
 #import "StackOverflowQuestionCell.h"
+#import "StackOverflowQuestionViewModel.h"
 
 @implementation StackOverflowQuestionCell
 
